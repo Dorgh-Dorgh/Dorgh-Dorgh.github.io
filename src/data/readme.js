@@ -28,7 +28,6 @@ export const readme = {
   sections: {
     about: {
       title: "About",
-      hint: "README 느낌 그대로",
       body: [
         "웹/시스템 취약점 분석, CTF, 포렌식 문제 풀이를 통해 실전 감각을 키우고 있습니다.",
         "목표는 '잘 보이는 결과'보다 '재현 가능한 근거'와 '검증 가능한 문서'를 남기는 것입니다.",
@@ -44,9 +43,7 @@ export const readme = {
       title: "Highlights",
       hint: "집요-분석형 톤",
       bullets: [
-        "가설 세우기 → 최소 재현 → 로그/트레이스 확보 → 원인 분해 → 재현성 확인",
-        "무기화가 아닌 안전한 연구·검증 관점(공격 페이로드 비공개)",
-        "반복 작업 자동화(스크립트/툴링)로 생산성 향상",
+        "가설 세우기 → 최소 재현 → 로그/트레이스 확보 → 원인 분해 → 재현성 확인",       
       ],
       pills: ["Reproducible", "Evidence-first", "Automation", "Clean UX"],
     },
@@ -59,7 +56,7 @@ export const readme = {
         "Python", "JavaScript", "Linux",
         "Burp", "pwntools", "Docker",
       ],
-      note: "이 영역은 README의 뱃지/아이콘 스타일로 바꿔도 좋습니다.",
+      note: "뱃지/아이콘 영역",
     },
 
     featured: {
