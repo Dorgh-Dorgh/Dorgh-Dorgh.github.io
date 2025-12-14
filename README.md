@@ -56,7 +56,7 @@ _“For a better Future”_
 - **2025.6** — 정보보안기사 취득 
 - **2025.6** — Dreamhack Web Hacking 학습 시작
 - **2025.11** — Whitehat Contest 본선 진출
-- **~ 현재** — 2026 BoB 준비
+-   ~  현재 — 2026 BoB 준비
 
 
 ---
