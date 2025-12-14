@@ -10,15 +10,11 @@ import { getInitialTheme, applyTheme } from "./lib/theme.js";
 
 export default function App(){
   const [theme, setTheme] = useState(getInitialTheme());
-
   useEffect(() => { applyTheme(theme); }, [theme]);
 
   return (
     <HashRouter>
-      <Layout
-        theme={theme}
-        onToggle={() => setTheme(prev => prev === "dark" ? "light" : "dark")}
-      >
+      <Layout theme={theme} onToggle={() => setTheme(t => t === "dark" ? "light" : "dark")}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />

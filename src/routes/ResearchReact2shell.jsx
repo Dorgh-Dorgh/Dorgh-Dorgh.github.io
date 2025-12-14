@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import AnchorNav from "../components/AnchorNav.jsx";
+import { scrollToId } from "../lib/scroll.js";
 
 const anchors = [
   { id: "goal", label: "Goal" },
@@ -10,6 +12,14 @@ const anchors = [
 ];
 
 export default function ResearchReact2shell(){
+  const location = useLocation();
+
+  useEffect(() => {
+    const s = new URLSearchParams(location.search).get("s");
+    if (!s) return;
+    setTimeout(() => scrollToId(s, 84), 0);
+  }, [location.search]);
+
   return (
     <section style={{paddingTop:"28px"}}>
       <div className="card">
@@ -25,10 +35,7 @@ export default function ResearchReact2shell(){
       <section className="readme-layout" style={{paddingTop:"14px"}}>
         <div>
           <section id="goal" className="card section">
-            <div className="section-head">
-              <h2>Goal</h2>
-              <span className="hint">개발 목적</span>
-            </div>
+            <div className="section-head"><h2>Goal</h2><span className="hint">개발 목적</span></div>
             <ul>
               <li><b>목표</b>: CVE-2025-55182(React2Shell) PoC <b>재현</b> (로컬 격리 환경)</li>
               <li><b>산출물</b>: 재현 로그/스크린샷/트레이스 + 패치 검증 리포트</li>
@@ -36,10 +43,7 @@ export default function ResearchReact2shell(){
           </section>
 
           <section id="scope" className="card section">
-            <div className="section-head">
-              <h2>Scope</h2>
-              <span className="hint">안전 범위</span>
-            </div>
+            <div className="section-head"><h2>Scope</h2><span className="hint">안전 범위</span></div>
             <ul>
               <li>외부 인터넷 노출 금지(로컬/격리 환경)</li>
               <li>무기화/공격 자동화 코드 공유 금지</li>
@@ -48,10 +52,7 @@ export default function ResearchReact2shell(){
           </section>
 
           <section id="env" className="card section">
-            <div className="section-head">
-              <h2>Environment</h2>
-              <span className="hint">재현 조건</span>
-            </div>
+            <div className="section-head"><h2>Environment</h2><span className="hint">재현 조건</span></div>
             <pre className="code">{`OS: (fill)
 Node: (fill)
 Affected package versions: (fill)
@@ -60,10 +61,7 @@ Isolation: (Docker / VM / local sandbox)`}</pre>
           </section>
 
           <section id="evidence" className="card section">
-            <div className="section-head">
-              <h2>Evidence</h2>
-              <span className="hint">로그/스크린샷</span>
-            </div>
+            <div className="section-head"><h2>Evidence</h2><span className="hint">로그/스크린샷</span></div>
             <ul>
               <li>재현 로그: <code className="small">/notes/react2shell/repro.log</code></li>
               <li>환경 정보: <code className="small">/notes/react2shell/env.md</code></li>
@@ -72,10 +70,7 @@ Isolation: (Docker / VM / local sandbox)`}</pre>
           </section>
 
           <section id="verify" className="card section">
-            <div className="section-head">
-              <h2>Patch Verification</h2>
-              <span className="hint">패치 검증</span>
-            </div>
+            <div className="section-head"><h2>Patch Verification</h2><span className="hint">패치 검증</span></div>
             <ul>
               <li>업데이트 후 동일 조건에서 재현이 더 이상 성립하지 않는지 확인</li>
               <li>차이가 발생한 지점(로그/트레이스)을 근거로 설명</li>

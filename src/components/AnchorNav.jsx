@@ -1,9 +1,17 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { scrollToId } from "../lib/scroll.js";
 
+/**
+ * HashRouter uses URL hash (#/path) for routing.
+ * DO NOT use "#section" anchors (they overwrite the route).
+ * We store section in the route query: #/?s=about
+ */
 export default function AnchorNav({ items, activeOffset = 96 }){
   const [active, setActive] = useState(items?.[0]?.id || "");
-
   const ids = useMemo(() => items.map(i => i.id), [items]);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     function onScroll(){
@@ -21,26 +29,24 @@ export default function AnchorNav({ items, activeOffset = 96 }){
     return () => window.removeEventListener("scroll", onScroll);
   }, [ids, activeOffset]);
 
+  const go = (id) => {
+    const sp = new URLSearchParams(location.search);
+    sp.set("s", id);
+    navigate({ pathname: location.pathname, search: `?${sp.toString()}` }, { replace: true });
+    requestAnimationFrame(() => scrollToId(id, 84));
+  };
+
   return (
     <aside className="anchor" aria-label="On this page">
       {items.map(i => (
-        <a
+        <button
           key={i.id}
-          href={`#${i.id}`}
+          type="button"
           className={active === i.id ? "active" : undefined}
-          onClick={(e) => {
-            // Smooth-ish scroll while keeping URL hash.
-            // Prevent default to avoid jump under sticky header.
-            e.preventDefault();
-            const el = document.getElementById(i.id);
-            if (!el) return;
-            const y = window.scrollY + el.getBoundingClientRect().top - 84;
-            window.scrollTo({ top: y, behavior: "smooth" });
-            history.replaceState(null, "", `#${i.id}`);
-          }}
+          onClick={() => go(i.id)}
         >
           {i.label}
-        </a>
+        </button>
       ))}
     </aside>
   );

@@ -15,7 +15,6 @@ export const readme = {
       { label: "GitHub", href: "https://github.com/Dorgh-Dorgh" },
     ],
   },
-
   anchors: [
     { id: "about", label: "About" },
     { id: "highlights", label: "Highlights" },
@@ -24,10 +23,10 @@ export const readme = {
     { id: "timeline", label: "Timeline" },
     { id: "contact", label: "Contact" },
   ],
-
   sections: {
     about: {
       title: "About",
+      hint: "README 느낌 그대로",
       body: [
         "웹/시스템 취약점 분석, CTF, 포렌식 문제 풀이를 통해 실전 감각을 키우고 있습니다.",
         "목표는 '잘 보이는 결과'보다 '재현 가능한 근거'와 '검증 가능한 문서'를 남기는 것입니다.",
@@ -38,16 +37,16 @@ export const readme = {
         { k: "Output", v: "문서화", d: "로그/스크린샷/체크리스트" },
       ],
     },
-
     highlights: {
       title: "Highlights",
       hint: "집요-분석형 톤",
       bullets: [
-        "가설 세우기 → 최소 재현 → 로그/트레이스 확보 → 원인 분해 → 재현성 확인",       
+        "가설 세우기 → 최소 재현 → 로그/트레이스 확보 → 원인 분해 → 재현성 확인",
+        "무기화가 아닌 안전한 연구·검증 관점(공격 페이로드 비공개)",
+        "반복 작업 자동화(스크립트/툴링)로 생산성 향상",
       ],
       pills: ["Reproducible", "Evidence-first", "Automation", "Clean UX"],
     },
-
     skills: {
       title: "Skills",
       hint: "Tech Stack",
@@ -56,9 +55,8 @@ export const readme = {
         "Python", "JavaScript", "Linux",
         "Burp", "pwntools", "Docker",
       ],
-      note: "뱃지/아이콘 영역",
+      note: "이 영역은 README의 뱃지/아이콘 스타일로 바꿔도 좋습니다.",
     },
-
     featured: {
       title: "Featured Projects",
       hint: "대표 2~4개만",
@@ -79,7 +77,6 @@ export const readme = {
         }
       ],
     },
-
     timeline: {
       title: "Timeline",
       hint: "진행 계획",
@@ -90,7 +87,6 @@ export const readme = {
         { when: "Week 4", what: "리포트 마감(결론/권고/한계/추가 과제)" },
       ],
     },
-
     contact: {
       title: "Contact",
       hint: "필요한 것만",

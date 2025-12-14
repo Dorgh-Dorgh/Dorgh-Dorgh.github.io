@@ -1,18 +1,22 @@
-# Dorgh-Dorgh.github.io (README Layout → Web)
+# DORGH — GitHub Pages (React + Vite)
 
-이 템플릿은 **README 레이아웃을 그대로 웹(Home)로 옮긴 구조**입니다.
+## 가장 흔한 문제(지금 너가 겪는 증상)
+배포된 `index.html`에 아래가 그대로 보이면 **빌드 결과(dist)가 아니라 소스가 서빙**되는 중입니다.
 
-## 수정 포인트(딱 1곳)
-- `src/data/readme.js`  
-  - Hero 문구, 뱃지, 섹션 내용(About/Highlights/Skills/Featured/Timeline/Contact) 전부 여기서 변경
-
-## 로컬 실행
-```bash
-npm install
-npm run dev
+```html
+<script type="module" src="/src/main.jsx"></script>
 ```
 
-## 배포
-1) 레포 이름을 `Dorgh-Dorgh.github.io`로 만들고 `main`에 push
-2) GitHub → Settings → Pages → Source: GitHub Actions
-3) push 하면 자동 배포됩니다.
+GitHub Pages는 Vite dev 서버가 아니라서, 이렇게 배포하면 React가 렌더링되지 않습니다.
+
+## 정답 설정 (추천)
+1) Settings → Pages → **Source: GitHub Actions**
+2) main에 push  
+→ `.github/workflows/deploy.yml` 이 `npm run build` 후 `dist`를 배포합니다.
+
+## 확인
+view-source에서 `./assets/index-xxxx.js` 같은 번들 파일이 보이면 정상입니다.
+
+## Anchor(목차) 관련
+HashRouter를 쓰므로 `#about` 같은 해시 앵커를 쓰면 라우팅이 깨집니다.  
+이 템플릿은 `#/?s=about` 형태(query)로 처리했습니다.

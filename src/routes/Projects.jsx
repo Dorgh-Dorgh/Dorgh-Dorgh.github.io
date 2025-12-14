@@ -60,11 +60,7 @@ export default function Projects(){
           {filtered.map(p => (
             <article key={p.id} className="card project" style={{margin:0}}>
               <div className="title">
-                <a
-                  href={p.href}
-                  target={p.href.startsWith("http") ? "_blank" : undefined}
-                  rel={p.href.startsWith("http") ? "noreferrer" : undefined}
-                >
+                <a href={p.href} target={/^https?:\/\//i.test(p.href) ? "_blank" : undefined} rel={/^https?:\/\//i.test(p.href) ? "noreferrer" : undefined}>
                   {p.title}
                 </a>
                 <span className="meta">{p.date}</span>

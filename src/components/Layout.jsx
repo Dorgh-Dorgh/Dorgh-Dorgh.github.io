@@ -4,13 +4,10 @@ import Nav from "./Nav.jsx";
 export default function Layout({ children, theme, onToggle }){
   const base = import.meta.env.BASE_URL || "./";
   const banner = `url(${base}assets/img/dorgh_banner.png)`;
-
   return (
     <div className="bg-grid" style={{ "--banner-url": banner }}>
-      <a className="skip" href="#main">본문으로 건너뛰기</a>
       <Nav theme={theme} onToggle={onToggle} />
-      <main id="main" className="container">{children}</main>
-
+      <main className="container">{children}</main>
       <footer>
         <div className="container">
           <div className="foot">
