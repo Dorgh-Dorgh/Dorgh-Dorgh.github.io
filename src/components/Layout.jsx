@@ -11,7 +11,7 @@ export default function Layout({ children, theme, onToggle }){
       <footer>
         <div className="container">
           <div className="foot">
-            <div>© {new Date().getFullYear()} DORGH · Minimal security portfolio</div>
+            <div>© {new Date().getFullYear()} DORGH · security portfolio</div>
             <div className="small"><a href="#/">Back to Home</a></div>
           </div>
         </div>
